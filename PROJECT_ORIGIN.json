@@ -1,0 +1,6 @@
+{
+  "name": "EarthSignal by NASWEATS 2.0",
+  "source_commit": "6d8958a848c494029e9fb21bdde60505acf53a06",
+  "source_archive_sha256": "a7968c52d8e02d72ab45f52cba670eab326a2d0f2afb2ad7802402b1ddeddad5",
+  "note": "Portable packaging of the approved final site. Application source and scientific data are preserved; build, preview and deployment tooling are independent."
+}

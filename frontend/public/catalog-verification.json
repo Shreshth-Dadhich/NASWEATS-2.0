@@ -1,0 +1,401 @@
+{
+  "retrieved_utc": "2026-11-14T08:03:01.320373+00:00",
+  "endpoint": "https://cmr.earthdata.nasa.gov/search/collections.umm_json",
+  "meaning": "Exact short-name metadata matches only. No data authorization or variable-field validation is inferred.",
+  "products": {
+    "AIRS3STM": {
+      "collections": [
+        {
+          "concept_id": "C1701805662-GES_DISC",
+          "short_name": "AIRS3STM",
+          "version": "7.0",
+          "title": "Aqua/AIRS L3 Monthly Standard Physical Retrieval (AIRS-only) 1 degree x 1 degree V7.0",
+          "doi": "10.5067/UBENJB9D3T2H",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "2002-09-01T00:00:00.000Z"
+                }
+              ],
+              "EndsAtPresentFlag": true
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C1701805662-GES_DISC.html"
+        },
+        {
+          "concept_id": "C1238517301-GES_DISC",
+          "short_name": "AIRS3STM",
+          "version": "006",
+          "title": "AIRS/Aqua L3 Monthly Standard Physical Retrieval (AIRS-only) 1 degree x 1 degree V006 (AIRS3STM)",
+          "doi": "10.5067/Aqua/AIRS/DATA321",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "2002-09-01T00:00:00.000Z"
+                }
+              ],
+              "EndsAtPresentFlag": true
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C1238517301-GES_DISC.html"
+        }
+      ]
+    },
+    "GLDAS_NOAH025_M": {
+      "collections": [
+        {
+          "concept_id": "C1342986036-GES_DISC",
+          "short_name": "GLDAS_NOAH025_M",
+          "version": "2.1",
+          "title": "GLDAS Noah Land Surface Model L4 monthly 0.25 x 0.25 degree V2.1 (GLDAS_NOAH025_M)",
+          "doi": "10.5067/SXAVCZFAQLNO",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "2000-01-01T00:00:00.000Z"
+                }
+              ],
+              "EndsAtPresentFlag": true
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C1342986036-GES_DISC.html"
+        },
+        {
+          "concept_id": "C1233767569-GES_DISC",
+          "short_name": "GLDAS_NOAH025_M",
+          "version": "2.0",
+          "title": "GLDAS Noah Land Surface Model L4 monthly 0.25 x 0.25 degree V2.0 (GLDAS_NOAH025_M)",
+          "doi": "10.5067/9SQ1B3ZXP2C5",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "1948-01-01T00:00:00.000Z",
+                  "EndingDateTime": "2014-12-31T23:59:59.999Z"
+                }
+              ],
+              "EndsAtPresentFlag": false
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C1233767569-GES_DISC.html"
+        }
+      ]
+    },
+    "GPM_3IMERGDF": {
+      "collections": [
+        {
+          "concept_id": "C2723754864-GES_DISC",
+          "short_name": "GPM_3IMERGDF",
+          "version": "07",
+          "title": "GPM IMERG Final Precipitation L3 1 day 0.1 degree x 0.1 degree V07 (GPM_3IMERGDF)",
+          "doi": "10.5067/GPM/IMERGDF/DAY/07",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "1998-01-01T00:00:00.000Z",
+                  "EndingDateTime": "2025-09-30T23:59:59.999Z"
+                }
+              ],
+              "EndsAtPresentFlag": false
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C2723754864-GES_DISC.html"
+        }
+      ]
+    },
+    "GPM_3IMERGM": {
+      "collections": [
+        {
+          "concept_id": "C2723754851-GES_DISC",
+          "short_name": "GPM_3IMERGM",
+          "version": "07",
+          "title": "GPM IMERG Final Precipitation L3 1 month 0.1 degree x 0.1 degree V07 (GPM_3IMERGM)",
+          "doi": "10.5067/GPM/IMERG/3B-MONTH/07",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "1998-01-01T00:00:00.000Z",
+                  "EndingDateTime": "2025-09-30T23:59:59.999Z"
+                }
+              ],
+              "EndsAtPresentFlag": false
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C2723754851-GES_DISC.html"
+        }
+      ]
+    },
+    "JASON_3_L2_OST_OGDR_GPS": {
+      "collections": [
+        {
+          "concept_id": "C2205122298-POCLOUD",
+          "short_name": "JASON_3_L2_OST_OGDR_GPS",
+          "version": "G",
+          "title": "Jason-3 GPS based orbit and SSHA OGDR",
+          "doi": "10.5067/J3L2G-OGDRF",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "2020-10-29T12:14:23.000Z"
+                }
+              ]
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C2205122298-POCLOUD.html"
+        }
+      ]
+    },
+    "M2TMNXAER": {
+      "collections": [
+        {
+          "concept_id": "C1276812866-GES_DISC",
+          "short_name": "M2TMNXAER",
+          "version": "5.12.4",
+          "title": "MERRA-2 tavgM_2d_aer_Nx: 2d,Monthly mean,Time-averaged,Single-Level,Assimilation,Aerosol Diagnostics 0.625 x 0.5 degree V5.12.4 (M2TMNXAER) ",
+          "doi": "10.5067/FH9A0MLJPC7N",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "1980-01-01T00:00:00.000Z"
+                }
+              ],
+              "EndsAtPresentFlag": true
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C1276812866-GES_DISC.html"
+        }
+      ]
+    },
+    "M2TMNXRAD": {
+      "collections": [
+        {
+          "concept_id": "C1276812858-GES_DISC",
+          "short_name": "M2TMNXRAD",
+          "version": "5.12.4",
+          "title": "MERRA-2 tavgM_2d_rad_Nx: 2d,Monthly mean,Time-Averaged,Single-Level,Assimilation,Radiation Diagnostics 0.625 x 0.5 degree V5.12.4 (M2TMNXRAD) ",
+          "doi": "10.5067/OU3HJDS973O0",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "1980-01-01T00:00:00.000Z"
+                }
+              ],
+              "EndsAtPresentFlag": true
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C1276812858-GES_DISC.html"
+        }
+      ]
+    },
+    "M2TMNXSLV": {
+      "collections": [
+        {
+          "concept_id": "C1276812859-GES_DISC",
+          "short_name": "M2TMNXSLV",
+          "version": "5.12.4",
+          "title": "MERRA-2 tavgM_2d_slv_Nx: 2d,Monthly mean,Time-Averaged,Single-Level,Assimilation,Single-Level Diagnostics 0.625 x 0.5 degree V5.12.4 (M2TMNXSLV) ",
+          "doi": "10.5067/AP1B0BA5PD2K",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "1980-01-01T00:00:00.000Z"
+                }
+              ],
+              "EndsAtPresentFlag": true
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C1276812859-GES_DISC.html"
+        }
+      ]
+    },
+    "MOD08_M3": {
+      "collections": [
+        {
+          "concept_id": "C1443766359-LAADS",
+          "short_name": "MOD08_M3",
+          "version": "6.1",
+          "title": "MODIS/Terra Aerosol Cloud Water Vapor Ozone Monthly L3 Global 1Deg CMG",
+          "doi": "10.5067/MODIS/MOD08_M3.061",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "2000-02-01T00:00:00.000Z"
+                }
+              ],
+              "PrecisionOfSeconds": 1,
+              "EndsAtPresentFlag": true
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C1443766359-LAADS.html"
+        }
+      ]
+    },
+    "MOD11C3": {
+      "collections": [
+        {
+          "concept_id": "C2565788897-LPCLOUD",
+          "short_name": "MOD11C3",
+          "version": "061",
+          "title": "MODIS/Terra Land Surface Temperature/Emissivity Monthly L3 Global 0.05Deg CMG V061",
+          "doi": "10.5067/MODIS/MOD11C3.061",
+          "temporal": [
+            {
+              "EndsAtPresentFlag": true,
+              "PrecisionOfSeconds": 4,
+              "TemporalResolution": {
+                "Value": 1,
+                "Unit": "Month"
+              },
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "2000-02-01T00:00:00.000Z"
+                }
+              ]
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C2565788897-LPCLOUD.html"
+        }
+      ]
+    },
+    "MODIS_AQUA_L3_SST_THERMAL_MONTHLY_4KM_DAYTIME_V2019.0": {
+      "collections": [
+        {
+          "concept_id": "C2036882228-POCLOUD",
+          "short_name": "MODIS_AQUA_L3_SST_THERMAL_MONTHLY_4KM_DAYTIME_V2019.0",
+          "version": "2019.0",
+          "title": "MODIS Aqua Level 3 SST Thermal IR Monthly 4km Daytime V2019.0",
+          "doi": "10.5067/MODSA-MO4D9",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "2002-07-01T00:00:00.000Z"
+                }
+              ]
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C2036882228-POCLOUD.html"
+        }
+      ]
+    },
+    "OMNO2d": {
+      "collections": [
+        {
+          "concept_id": "C3333493715-GES_DISC",
+          "short_name": "OMNO2d",
+          "version": "004",
+          "title": "OMI/Aura NO2 Cloud-Screened Total and Tropospheric Column L3 Global Gridded 0.25 degree x 0.25 degree Ver 5.0, Col 004 (OMNO2d) ",
+          "doi": "10.5067/AURA/OMI/DATA3407",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "2004-10-01T00:00:00.000Z"
+                }
+              ],
+              "EndsAtPresentFlag": true
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C3333493715-GES_DISC.html"
+        },
+        {
+          "concept_id": "C1266136111-GES_DISC",
+          "short_name": "OMNO2d",
+          "version": "003",
+          "title": "OMI/Aura NO2 Cloud-Screened Total and Tropospheric Column L3 Global Gridded 0.25 degree x 0.25 degree V3 (OMNO2d) ",
+          "doi": "10.5067/Aura/OMI/DATA3007",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "2004-10-01T00:00:00.000Z"
+                }
+              ],
+              "EndsAtPresentFlag": true
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C1266136111-GES_DISC.html"
+        }
+      ]
+    },
+    "OSCAR_L4_OC_FINAL_V2.0": {
+      "collections": [
+        {
+          "concept_id": "C2098858642-POCLOUD",
+          "short_name": "OSCAR_L4_OC_FINAL_V2.0",
+          "version": "2.0",
+          "title": "Ocean Surface Current Analyses Real-time (OSCAR) Surface Currents - Final 0.25 Degree (Version 2.0)",
+          "doi": "10.5067/OSCAR-25F20",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "1993-01-01T00:00:00.000Z",
+                  "EndingDateTime": "2026-01-17T00:00:00.000Z"
+                }
+              ],
+              "EndsAtPresentFlag": false
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C2098858642-POCLOUD.html"
+        }
+      ]
+    },
+    "SWOT_L2_LR_SSH_2.0": {
+      "collections": [
+        {
+          "concept_id": "C2799438306-POCLOUD",
+          "short_name": "SWOT_L2_LR_SSH_2.0",
+          "version": "2.0",
+          "title": "SWOT Level 2 KaRIn Low Rate Sea Surface Height Data Product, Version C",
+          "doi": "10.5067/SWOT-SSH-2.0",
+          "temporal": [
+            {
+              "EndsAtPresentFlag": false,
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "2022-12-16T00:00:00.000Z"
+                }
+              ]
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C2799438306-POCLOUD.html"
+        }
+      ]
+    },
+    "TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.1_V2": {
+      "collections": []
+    },
+    "TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4": {
+      "collections": [
+        {
+          "concept_id": "C3195527175-POCLOUD",
+          "short_name": "TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4",
+          "version": "RL06.3Mv04",
+          "title": "JPL GRACE and GRACE-FO Mascon Ocean, Ice, and Hydrology Equivalent Water Height Coastal Resolution Improvement (CRI) Filtered Release 06.3 Version 04",
+          "doi": "10.5067/TEMSC-3JC634",
+          "temporal": [
+            {
+              "RangeDateTimes": [
+                {
+                  "BeginningDateTime": "2002-04-04T00:00:00.000Z"
+                }
+              ]
+            }
+          ],
+          "url": "https://cmr.earthdata.nasa.gov/search/concepts/C3195527175-POCLOUD.html"
+        }
+      ]
+    }
+  }
+}

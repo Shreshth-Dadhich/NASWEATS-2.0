@@ -1,0 +1,14 @@
+# Preserve original scientific/download bytes on every platform.
+frontend/public/** -text
+frontend_data.zip -text
+*.png -text
+*.jpg -text
+*.woff2 -text
+*.gz -text
+*.zip -text
+*.mjs text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.css text eol=lf
+package*.json text eol=lf
+README.md text eol=lf

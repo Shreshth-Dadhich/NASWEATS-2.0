@@ -1,0 +1,1 @@
+{"apiBase":null,"description":"Set apiBase to an HTTPS FastAPI deployment URL to enable native Earthdata acquisition. Never put credentials here."}

@@ -1,0 +1,5 @@
+export const MEASUREMENTS={temperature:'T₂m',humidity:'RH',precipitation:'P',wind:'V₁₀',dust:'AOD',air_quality:'AQ',cloud:'CF',water:'TWS',sea_level:'Mₒ',ocean:'TS',water_level:'H₂O',soil_root:'SW',soil_top:'SW',precip_gmi:'P',precip_corr_gmi:'P'};
+export function getTheme(){try{const value=localStorage.getItem('earthsignal-theme');return ['atlas','midnight','aurora'].includes(value)?value:'atlas';}catch{return 'atlas';}}
+export function saveTheme(value){try{localStorage.setItem('earthsignal-theme',value);}catch{/* Appearance still works when browser storage is disabled. */}}
+export function clampRange(range,lo,hi){if(hi-lo<4)return [lo,hi];const start=Math.max(lo,Math.min(range[0],hi-4));return [start,Math.min(hi,Math.max(range[1],start+4))];}
+export function validateComparison(a,b){if(!b)return;if(a.unit!==b.unit||a.parameter!==b.parameter||a.source_mode!==b.source_mode||a.source?.api?.version!==b.source?.api?.version||a.source?.version!==b.source?.version)throw Error('The comparison sources have different measurements or units, or different source versions. Results were not combined.');}

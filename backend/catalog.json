@@ -1,0 +1,553 @@
+[
+  {
+    "id": "temperature",
+    "name": "Temperature",
+    "icon": "☀",
+    "unit": "°C",
+    "definition": "Air temperature at 2 meters and land surface temperature describe different parts of the heat system. Satellite LST is the surface skin temperature, not the air temperature.",
+    "process": "Desert albedo, irrigation and urban surfaces can change heat differently. A regional trend alone does not identify an urban heat island or its cause.",
+    "caution": "Do not merge MERRA-2 air temperature and MODIS LST into one time series.",
+    "products": [
+      {
+        "id": "air",
+        "short_name": "M2TMNXSLV",
+        "field": "T2M",
+        "unit": "°C",
+        "scale": 1,
+        "offset": -273.15,
+        "native_unit": "K",
+        "resolution": "0.5° × 0.625°",
+        "start": 1980,
+        "version": "5.12.4"
+      },
+      {
+        "id": "lst",
+        "short_name": "MOD11C3",
+        "field": "LST_Day_CMG",
+        "unit": "°C",
+        "scale": 0.02,
+        "offset": -273.15,
+        "resolution": "0.05°",
+        "start": 2000,
+        "qa_field": "QC_Day",
+        "qa_mask": 3,
+        "qa_value": 0,
+        "version": "061"
+      }
+    ],
+    "starter": {
+      "parameter": "T2M",
+      "label": "NASA POWER / MERRA-2 air temperature"
+    }
+  },
+  {
+    "id": "humidity",
+    "name": "Humidity",
+    "icon": "◉",
+    "unit": "%",
+    "definition": "Specific humidity is water vapor mass per mass of moist air. Relative humidity is the percentage of saturation and depends on temperature.",
+    "process": "Moisture transport from the Gulf and Red Sea interacts with warming and coastal development. Relative humidity may fall even as water vapor increases.",
+    "caution": "AIRS humidity is vertically resolved: choose an explicit pressure level. Never average pressure levels together.",
+    "products": [
+      {
+        "id": "specific",
+        "short_name": "M2TMNXSLV",
+        "field": "QV2M",
+        "unit": "kg/kg",
+        "scale": 1,
+        "offset": 0,
+        "resolution": "0.5° × 0.625°",
+        "start": 1980,
+        "version": "5.12.4"
+      },
+      {
+        "id": "airs",
+        "short_name": "AIRS3STM",
+        "field": null,
+        "unit": "product units",
+        "start": 2002,
+        "needs_selection": "Select a documented relative humidity field and pressure level from product metadata."
+      }
+    ],
+    "starter": {
+      "parameter": "RH2M",
+      "label": "NASA POWER / MERRA-2 relative humidity"
+    }
+  },
+  {
+    "id": "precipitation",
+    "name": "Precipitation",
+    "icon": "☂",
+    "unit": "mm/hour",
+    "definition": "IMERG combines satellite precipitation estimates with gauge information. Monthly precipitation rate is not a monthly accumulated total.",
+    "process": "Winter storms, mountain rain, and summer monsoon moisture affect the Middle East differently. Compare matching seasons rather than assuming a global trend.",
+    "caution": "Convert rates to totals only with documented units and time bounds. NASA POWER precipitation is not IMERG and is not substituted here.",
+    "products": [
+      {
+        "id": "monthly",
+        "short_name": "GPM_3IMERGM",
+        "field": "precipitation",
+        "unit": "mm/hour",
+        "scale": 1,
+        "offset": 0,
+        "resolution": "0.1°",
+        "start": 2000,
+        "group": "Grid",
+        "version": "07"
+      },
+      {
+        "id": "daily",
+        "short_name": "GPM_3IMERGDF",
+        "field": "precipitation",
+        "unit": "verify product metadata",
+        "start": 2000,
+        "group": "Grid",
+        "version": "07"
+      }
+    ],
+    "starter": {
+      "parameter": "PRECTOTCORR",
+      "label": "NASA POWER / MERRA-2 corrected precipitation",
+      "measurement_label": "Corrected precipitation rate",
+      "start": 1984,
+      "end": 2024
+    }
+  },
+  {
+    "id": "wind",
+    "name": "Wind",
+    "icon": "≋",
+    "unit": "m/s",
+    "definition": "Wind vectors describe eastward (U10M) and northward (V10M) flow at 10 meters. Speed of the monthly mean vector differs from mean wind speed.",
+    "process": "Shamal winds transport dust across Iraq and the Arabian Peninsula. Seasonal wind direction and strength can evolve independently.",
+    "caution": "Direction is circular. Never run a linear trend on compass degrees. Native vector speed is sqrt(U² + V²); direction is meteorological 'from'.",
+    "products": [
+      {
+        "id": "vector_speed",
+        "short_name": "M2TMNXSLV",
+        "fields": [
+          "U10M",
+          "V10M"
+        ],
+        "field": "vector_speed",
+        "unit": "m/s",
+        "scale": 1,
+        "offset": 0,
+        "resolution": "0.5° × 0.625°",
+        "start": 1980,
+        "version": "5.12.4"
+      }
+    ],
+    "starter": {
+      "parameter": "WS10M",
+      "label": "NASA POWER / MERRA-2 mean wind speed (not vector speed)"
+    }
+  },
+  {
+    "id": "dust",
+    "name": "Dust loading",
+    "icon": "◌",
+    "unit": "kg/m²",
+    "definition": "Dust column mass is the modeled mass of dust above a square meter. Aerosol optical depth describes light extinction by particles throughout the atmospheric column.",
+    "process": "Shamal winds, soil moisture and exposed sediments influence regional dust. All-aerosol AOD is not dust composition or a storm count.",
+    "caution": "Monthly AOD or dust mass cannot determine storm frequency. Event counts require a validated daily threshold and completeness rule.",
+    "products": [
+      {
+        "id": "mass",
+        "short_name": "M2TMNXAER",
+        "field": "DUCMASS",
+        "unit": "kg/m²",
+        "scale": 1,
+        "offset": 0,
+        "resolution": "0.5° × 0.625°",
+        "start": 1980,
+        "version": "5.12.4"
+      },
+      {
+        "id": "deepblue",
+        "short_name": "MOD08_M3",
+        "field": "Deep_Blue_Aerosol_Optical_Depth_550_Land_Mean_Mean",
+        "unit": "1",
+        "scale": 0.001,
+        "offset": 0,
+        "resolution": "1°",
+        "start": 2000,
+        "version": "6.1"
+      }
+    ],
+    "starter": {
+      "parameter": "duexttau",
+      "label": "NASA MERRA2-GMI monthly dust optical depth",
+      "measurement_label": "Dust optical depth at 550 nm",
+      "start": 1980,
+      "end": 2019
+    }
+  },
+  {
+    "id": "air_quality",
+    "name": "Air quality",
+    "icon": "◍",
+    "unit": "molecules/cm²",
+    "definition": "PM2.5 is the mass concentration of particles smaller than 2.5 micrometers. The public measurement is NASA MERRA2-GMI reconstructed bottom-layer PM2.5 in micrograms per cubic meter; it is a model replay, not a street-level sensor reading. OMI NO₂ is a separate column measurement.",
+    "process": "Shipping, urban emissions, oil and gas activity, transported pollution, and dust may influence different measurements.",
+    "caution": "PM2.5 is not NO₂ or chemical composition. The NASA bottom-layer field uses kg/m³, converted by ×1,000,000,000 to µg/m³. Grid-scale monthly means do not describe hourly personal exposure.",
+    "products": [
+      {
+        "id": "no2",
+        "short_name": "OMNO2d",
+        "field": "ColumnAmountNO2TropCloudScreened",
+        "unit": "molecules/cm²",
+        "scale": 1,
+        "offset": 0,
+        "resolution": "0.25°",
+        "start": 2004
+      },
+      {
+        "id": "extinction",
+        "short_name": "M2TMNXAER",
+        "field": "DUEXTTAU",
+        "unit": "1",
+        "scale": 1,
+        "offset": 0,
+        "resolution": "0.5° × 0.625°",
+        "start": 1980,
+        "version": "5.12.4"
+      }
+    ],
+    "starter": {
+      "parameter": "pm25_bot",
+      "label": "NASA MERRA2-GMI monthly bottom-layer PM2.5",
+      "measurement_label": "Reconstructed bottom-layer PM2.5",
+      "start": 1980,
+      "end": 2019
+    }
+  },
+  {
+    "id": "cloud",
+    "name": "Low clouds",
+    "icon": "☁",
+    "unit": "fraction",
+    "definition": "Low-cloud fraction describes the fraction of a grid cell covered by low clouds. Fog is near-surface cloud that reduces visibility and needs separate validation.",
+    "process": "Cool winter nights, marine moisture and boundary-layer stability influence fog risk along the Gulf coast.",
+    "caution": "A cloud-fraction trend is not a fog-frequency trend. Do not infer visibility or fog events from a monthly mean.",
+    "products": [
+      {
+        "id": "low_cloud",
+        "short_name": "M2TMNXRAD",
+        "field": "CLDLOW",
+        "unit": "fraction",
+        "scale": 1,
+        "offset": 0,
+        "resolution": "0.5° × 0.625°",
+        "start": 1980,
+        "version": "5.12.4"
+      },
+      {
+        "id": "modis_cloud",
+        "short_name": "MOD08_M3",
+        "field": "Cloud_Fraction_Mean_Mean",
+        "unit": "fraction",
+        "scale": 0.0001,
+        "offset": 0,
+        "resolution": "1°",
+        "start": 2000,
+        "version": "6.1"
+      }
+    ],
+    "starter": {
+      "parameter": "cldlow",
+      "label": "NASA MERRA2-GMI monthly low-cloud fraction",
+      "measurement_label": "Low-cloud fraction",
+      "start": 1980,
+      "end": 2019
+    }
+  },
+  {
+    "id": "water",
+    "name": "Water storage",
+    "icon": "≈",
+    "unit": "cm",
+    "definition": "GRACE measures changes in total water storage, including groundwater, soil moisture, surface water and snow. GLDAS estimates land-surface water components.",
+    "process": "Irrigation, reservoir operations, drought and abstraction can change the Tigris–Euphrates basin water balance.",
+    "caution": "GRACE is not groundwater alone or a reservoir water-level gauge. Groundwater estimates require component subtraction and uncertainty propagation. Mission gaps stay missing.",
+    "products": [
+      {
+        "id": "grace",
+        "short_name": "TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.1_V2",
+        "field": "lwe_thickness",
+        "unit": "cm",
+        "scale": 1,
+        "offset": 0,
+        "resolution": "mascons; gridded spacing is not independent resolution",
+        "start": 2002,
+        "needs_selection": "Requested identifier has no exact NASA CMR match. Choose the explicitly labeled active RL06.3 V4 alternative; never silently replace versions."
+      },
+      {
+        "id": "grace_active",
+        "short_name": "TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4",
+        "version": "RL06.3Mv04",
+        "field": "lwe_thickness",
+        "unit": "cm",
+        "scale": 1,
+        "offset": 0,
+        "start": 2002,
+        "resolution": "mascons; output grid is not independent resolution",
+        "version_note": "Explicit active alternative to the unmatched requested RL06.1_V2 identifier. Reference baseline and corrections must be read from source attributes."
+      },
+      {
+        "id": "soil",
+        "short_name": "GLDAS_NOAH025_M",
+        "field": "SoilMoi0_10cm_inst",
+        "unit": "kg/m²",
+        "scale": 1,
+        "offset": 0,
+        "resolution": "0.25°",
+        "start": 2000
+      },
+      {
+        "id": "runoff",
+        "short_name": "GLDAS_NOAH025_M",
+        "field": "Qs_acc",
+        "unit": "verify product metadata",
+        "scale": 1,
+        "offset": 0,
+        "resolution": "0.25°",
+        "start": 2000
+      }
+    ],
+    "starter": {
+      "parameter": "cmwe_OBP",
+      "label": "NASA GSFC GRACE / GRACE-FO land water storage",
+      "measurement_label": "Total water-storage anomaly",
+      "start": 2002,
+      "end": 2026,
+      "refreshable": false
+    }
+  },
+  {
+    "id": "sea_level",
+    "name": "Sea-level mass",
+    "icon": "∿",
+    "unit": "m",
+    "definition": "Sea surface height anomalies measure departures from a reference surface. Jason along-track observations and SWOT swaths have different sampling and processing.",
+    "process": "Thermal expansion, winds and circulation influence Gulf and Red Sea sea level. Tidal patterns require high-frequency tidal analysis, not a linear monthly trend.",
+    "caution": "The public GRACE SLA metric measures the mass component of sea-level anomaly in equivalent water height. It excludes thermal expansion and is not total altimetric sea-surface height or tidal analysis. Jason / SWOT remain separate products.",
+    "products": [
+      {
+        "id": "jason",
+        "short_name": "JASON_3_L2_OST_OGDR_GPS",
+        "field": null,
+        "unit": "m",
+        "needs_selection": "Choose science-quality delayed-time Jason SSHA collection and field through CMR; operational OGDR is discovery only.",
+        "start": 2016,
+        "version": "G"
+      },
+      {
+        "id": "swot",
+        "short_name": "SWOT_L2_LR_SSH_2.0",
+        "field": "ssha_karin",
+        "unit": "m",
+        "start": 2023,
+        "needs_selection": "SWOT swath processing and documented quality-bit masking required; record too short for multi-decade analysis.",
+        "version": "2.0"
+      }
+    ],
+    "starter": {
+      "parameter": "cmwe_SLA",
+      "label": "NASA GSFC GRACE / GRACE-FO ocean mass",
+      "measurement_label": "Sea-level mass component",
+      "start": 2002,
+      "end": 2026,
+      "refreshable": false
+    }
+  },
+  {
+    "id": "ocean",
+    "name": "Ocean & surface heat",
+    "icon": "↝",
+    "unit": "m/s",
+    "definition": "OSCAR estimates near-surface ocean velocity from satellite observations and physical models. MODIS SST measures sea-surface skin temperature under clear-sky conditions.",
+    "process": "Monsoon winds, exchange through the Strait of Hormuz and Bab el-Mandeb, and marine heat affect coastal ecosystems.",
+    "caution": "The public metric is modeled surface skin temperature over both land and ocean. For marine thermal analysis select an offshore region; coastal cells can include land. It is not MODIS SST and does not measure currents. Authenticated OSCAR and MODIS products remain separate choices.",
+    "products": [
+      {
+        "id": "currents",
+        "short_name": "OSCAR_L4_OC_FINAL_V2.0",
+        "fields": [
+          "u",
+          "v"
+        ],
+        "field": "vector_speed",
+        "unit": "m/s",
+        "scale": 1,
+        "offset": 0,
+        "resolution": "0.25°",
+        "start": 1993,
+        "version": "2.0"
+      },
+      {
+        "id": "sst",
+        "short_name": "MODIS_AQUA_L3_SST_THERMAL_MONTHLY_4KM_DAYTIME_V2019.0",
+        "field": "sst",
+        "unit": "°C",
+        "scale": 1,
+        "offset": 0,
+        "start": 2002,
+        "needs_selection": "Verified CMR short name corrected from an invalid adapter identifier. Validate SST quality mask and native field units before enabling acquisition.",
+        "rejected_identifier": "MODISA_L3m_SST_Monthly_4km_Daytime_V2019.0",
+        "version": "2019.0"
+      }
+    ],
+    "starter": {
+      "parameter": "ts",
+      "label": "NASA MERRA2-GMI surface skin temperature",
+      "measurement_label": "Surface skin temperature (land + sea)",
+      "start": 1980,
+      "end": 2019
+    }
+  },
+  {
+    "id": "water_level",
+    "name": "Lake water levels",
+    "icon": "≈",
+    "unit": "m",
+    "definition": "NASA Global Water Measurements monitors water-surface height changes at individual lake and reservoir ground-track locations. This is a feature observation, separate from regional GRACE water storage.",
+    "process": "Rainfall, drought, inflow, evaporation and dam operation can raise or lower reservoir levels. A trend alone does not separate these causes.",
+    "caution": "Select a monitored lake. Monthly values average the actual available satellite overpasses; missing observations remain missing. Referenced anomalies are not absolute lake depths. Ice, narrow crossings and mission-merger advisories must be reviewed in the source.",
+    "starter": {
+      "parameter": "GWM_HEIGHT_ANOMALY",
+      "label": "NASA GSFC Global Water Measurements",
+      "measurement_label": "Lake level anomaly",
+      "start": 1992,
+      "end": 2026,
+      "refreshable": false
+    },
+    "products": [
+      {
+        "id": "gwm_height",
+        "short_name": "NASA_GSFC_GWM",
+        "field": "GWM_HEIGHT_ANOMALY",
+        "unit": "m",
+        "start": 1992,
+        "needs_selection": "Public feature records are available in the monitored-lake selector."
+      }
+    ]
+  },
+  {
+    "id": "soil_root",
+    "name": "Soil wetness",
+    "metric_name": "Root-zone soil wetness",
+    "icon": "SM",
+    "unit": "dimensionless",
+    "public_only": true,
+    "related_study_variable": "GWETROOT",
+    "definition": "Relative soil wetness in the root zone from NASA MERRA2-GMI monthly land diagnostics. This is a dimensionless modeled wetness, not groundwater storage.",
+    "process": "Rain, evaporation and land processes can change soil wetness. Availability is limited to modeled land cells.",
+    "caution": "Global locations, bounded study areas and native source resolution; published archive 1980–2019. This chemistry replay is not the supplied fixed-region 2000–2025 MERRA-2 study. Missing observations are not filled.",
+    "products": [
+      {
+        "id": "gmi",
+        "short_name": "M2TMNXLND",
+        "field": "gwetroot",
+        "unit": "dimensionless",
+        "start": 1980
+      }
+    ],
+    "starter": {
+      "parameter": "gwetroot",
+      "label": "NASA MERRA2-GMI · Root-zone soil wetness",
+      "measurement_label": "Root-zone soil wetness",
+      "start": 1980,
+      "end": 2019
+    }
+  },
+  {
+    "id": "soil_top",
+    "name": "Topsoil wetness",
+    "metric_name": "Topsoil wetness",
+    "variant_of": "soil_root",
+    "icon": "SM",
+    "unit": "dimensionless",
+    "public_only": true,
+    "related_study_variable": "GWETTOP",
+    "definition": "Relative soil wetness in the surface layer from NASA MERRA2-GMI monthly land diagnostics. This is a dimensionless modeled wetness, not groundwater storage.",
+    "process": "Rain, evaporation and land processes can change soil wetness. Availability is limited to modeled land cells.",
+    "caution": "Global locations, bounded study areas and native source resolution; published archive 1980–2019. This chemistry replay is not the supplied fixed-region 2000–2025 MERRA-2 study. Missing observations are not filled.",
+    "products": [
+      {
+        "id": "gmi",
+        "short_name": "M2TMNXLND",
+        "field": "gwettop",
+        "unit": "dimensionless",
+        "start": 1980
+      }
+    ],
+    "starter": {
+      "parameter": "gwettop",
+      "label": "NASA MERRA2-GMI · Topsoil wetness",
+      "measurement_label": "Topsoil wetness",
+      "start": 1980,
+      "end": 2019
+    }
+  },
+  {
+    "id": "precip_gmi",
+    "name": "Precipitation rate · PRECTOT",
+    "metric_name": "Precipitation rate · PRECTOT",
+    "variant_of": "precipitation",
+    "icon": "P",
+    "unit": "mm/day",
+    "public_only": true,
+    "related_study_variable": "PRECTOT_MM_MONTH",
+    "definition": "NASA MERRA2-GMI monthly prectot converted from kg/m²/s to mean precipitation rate in mm/day. It is distinct from the uploaded study’s monthly totals and the existing NASA POWER product.",
+    "process": "Rainfall can vary differently across regions. PRECTOT and PRECTOTCORR remain separate fields.",
+    "caution": "Global locations, bounded study areas and native source resolution; published archive 1980–2019. This chemistry replay is not the supplied fixed-region 2000–2025 MERRA-2 study. Missing observations are not filled.",
+    "products": [
+      {
+        "id": "gmi",
+        "short_name": "M2TMNXFLX",
+        "field": "prectot",
+        "unit": "mm/day",
+        "start": 1980
+      }
+    ],
+    "starter": {
+      "parameter": "prectot",
+      "label": "NASA MERRA2-GMI · Precipitation rate · PRECTOT",
+      "measurement_label": "Precipitation rate · PRECTOT",
+      "start": 1980,
+      "end": 2019
+    },
+    "metric_notice": "NASA replay PRECTOT and PRECTOTCORR are identical in the audited Gulf and California records. These are rates, separate from the supplied study’s monthly totals."
+  },
+  {
+    "id": "precip_corr_gmi",
+    "name": "Precipitation rate · PRECTOTCORR",
+    "metric_name": "Precipitation rate · PRECTOTCORR",
+    "variant_of": "precipitation",
+    "icon": "P",
+    "unit": "mm/day",
+    "public_only": true,
+    "related_study_variable": "PRECTOTCORR_MM_MONTH",
+    "definition": "NASA MERRA2-GMI monthly prectotcorr converted from kg/m²/s to mean precipitation rate in mm/day. It is distinct from the uploaded study’s monthly totals and the existing NASA POWER product.",
+    "process": "Rainfall can vary differently across regions. PRECTOT and PRECTOTCORR remain separate fields.",
+    "caution": "Global locations, bounded study areas and native source resolution; published archive 1980–2019. This chemistry replay is not the supplied fixed-region 2000–2025 MERRA-2 study. Missing observations are not filled. The audited Gulf and California PRECTOT and PRECTOTCORR records are identical; no difference is invented.",
+    "products": [
+      {
+        "id": "gmi",
+        "short_name": "M2TMNXFLX",
+        "field": "prectotcorr",
+        "unit": "mm/day",
+        "start": 1980
+      }
+    ],
+    "starter": {
+      "parameter": "prectotcorr",
+      "label": "NASA MERRA2-GMI · Precipitation rate · PRECTOTCORR",
+      "measurement_label": "Precipitation rate · PRECTOTCORR",
+      "start": 1980,
+      "end": 2019
+    },
+    "metric_notice": "NASA replay PRECTOT and PRECTOTCORR are identical in the audited Gulf and California records. These are rates, separate from the supplied study’s monthly totals."
+  }
+]
