@@ -1,0 +1,386 @@
+EarthSystem / Editorial Research UI System
+
+
+1. Aesthetic Identity & Design Philosophy
+
+
+
+
+Atmosphere: Deep navy near-black field, editorial warmth from desert sand/gold accents, crisp cyan/teal telemetry, and subtle technical gridlines.
+
+
+Tone: High-credibility scientific research and investigative journalism (reminiscent of NASA mission dashboards combined with high-end editorial science publications).
+
+
+Lighting: Layered radial atmosphere gradients over deep navy (--gradient-atmosphere), dark glassmorphic sticky navigation, and inset border highlights on cards.
+
+
+Data Integrity: Tabular monospaced numerals, strict significance badging (FDR p-value status), and linear chart interpolation (no artificial smoothing).
+
+
+
+
+
+
+2. Typography Stack
+
+
+
+Load via Google Fonts:
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
+/>
+
+
+
+Role	Font Family	Usage
+Display / Hero Titles	"Instrument Serif", Georgia, serif	Hero headlines, section titles, large visual stats (.display)
+Interface & Prose	"IBM Plex Sans", system-ui, sans-serif	Body text, navigation, descriptions, buttons, tooltips
+Data, Labels & Eyebrows	"IBM Plex Mono", monospace	Numbers (.num tabular-nums), metrics, badges, category tags (.eyebrow)
+
+
+
+
+3. Design Tokens (Tailwind v4 / CSS Variables in OKLCH)
+
+
+
+Add these tokens to your global CSS:
+
+
+
+@theme inline {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+
+  /* Research & Scientific Semantic Tokens */
+  --color-sand: var(--sand);
+  --color-sand-dim: var(--sand-dim);
+  --color-teal: var(--teal);
+  --color-cyan: var(--cyan);
+  --color-positive: var(--positive);
+  --color-negative: var(--negative);
+  --color-significant: var(--significant);
+  --color-insignificant: var(--insignificant);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Surfaces */
+  --background: oklch(0.145 0.022 258);
+  --foreground: oklch(0.94 0.014 85);
+  --surface: oklch(0.175 0.026 257);
+  --surface-raised: oklch(0.205 0.03 256);
+  --card: oklch(0.18 0.027 257);
+  --card-foreground: oklch(0.94 0.014 85);
+  --border: oklch(0.31 0.03 255 / 0.75);
+
+  /* Accent & Core Brand */
+  --primary: oklch(0.8 0.105 78); /* Warm Sand Gold */
+  --primary-foreground: oklch(0.17 0.03 258);
+  --secondary: oklch(0.24 0.032 256);
+  --secondary-foreground: oklch(0.9 0.015 85);
+  --muted: oklch(0.23 0.028 256);
+  --muted-foreground: oklch(0.69 0.025 250);
+
+  /* Scientific Accents */
+  --sand: oklch(0.8 0.105 78);
+  --sand-dim: oklch(0.62 0.07 75);
+  --teal: oklch(0.74 0.11 178);
+  --cyan: oklch(0.8 0.115 212);
+  --positive: oklch(0.72 0.15 45);   /* Warm amber/coral for increases */
+  --negative: oklch(0.72 0.12 238);  /* Cool blue/slate for decreases */
+  --significant: oklch(0.82 0.12 82);
+  --insignificant: oklch(0.55 0.02 255);
+  --grid: oklch(0.32 0.025 255 / 0.55);
+
+  /* Gradients & Shadows */
+  --gradient-atmosphere:
+    radial-gradient(1200px 600px at 85% -10%, oklch(0.4 0.08 230 / 0.35), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, oklch(0.45 0.08 70 / 0.16), transparent 60%),
+    linear-gradient(180deg, oklch(0.15 0.025 258), oklch(0.13 0.02 258));
+  --gradient-card: linear-gradient(160deg, oklch(0.205 0.03 256), oklch(0.17 0.025 257));
+  --shadow-card: 0 1px 0 oklch(1 0 0 / 0.04) inset, 0 20px 40px -24px oklch(0 0 0 / 0.6);
+  --shadow-glow: 0 0 0 1px oklch(0.8 0.105 78 / 0.3), 0 10px 40px -12px oklch(0.8 0.105 78 / 0.35);
+}
+
+
+
+
+
+4. Custom Utility Classes
+
+
+@layer components {
+  /* Mono uppercase subheader / tracker tag */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sand);
+  }
+
+  /* Editorial serif headline */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.02;
+  }
+
+  /* Raised elevation card with subtle top highlight border */
+  .panel {
+    background: var(--gradient-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Inset metric container */
+  .panel-inset {
+    background: oklch(0.155 0.022 258 / 0.7);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+
+  /* Strict tabular numbers */
+  .num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Faded coordinate grid background */
+  .grid-lines {
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+}
+
+
+
+
+
+5. Core Layout Components
+
+
+A. Global Shell (SiteHeader + SiteFooter)
+
+
+
+
+Header: Fixed height h-16, sticky top-0 z-40, background bg-background/75 backdrop-blur-xl, border border-b border-border/60.
+
+
+Brand Mark: Minimal orbital SVG icon featuring concentric sand & cyan rings with a trajectory arc.
+
+
+Nav Links: Pill hover state (text-muted-foreground hover:text-foreground), active state (bg-surface-raised text-primary).
+
+
+Mobile Nav: Sheet drawer slide-in with Instrument Serif header.
+
+
+
+
+B. Page Intro (PageIntro.tsx)
+
+
+export function PageIntro({ eyebrow, title, lede, children }: PageIntroProps) {
+  return (
+    <section className="relative overflow-hidden border-b border-border/50">
+      <div className="grid-lines pointer-events-none absolute inset-0 opacity-60" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-4 pb-12 pt-14 sm:px-6 lg:px-8 lg:pb-16 lg:pt-20">
+        <p className="eyebrow">{eyebrow}</p>
+        <h1 className="display mt-4 max-w-4xl text-5xl text-foreground sm:text-6xl lg:text-7xl">
+          {title}
+        </h1>
+        <div className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+          {lede}
+        </div>
+        {children && <div className="mt-8">{children}</div>}
+      </div>
+    </section>
+  );
+}
+
+
+
+C. Section Structure (Section.tsx)
+
+
+export function Section({ eyebrow, title, description, aside, children }: SectionProps) {
+  return (
+    <section className="mx-auto max-w-7xl px-4 pt-16 sm:px-6 lg:px-8">
+      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="max-w-3xl">
+          {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+          <h2 className="display mt-2 text-3xl text-foreground sm:text-4xl">{title}</h2>
+          {description && <p className="mt-3 leading-relaxed text-muted-foreground">{description}</p>}
+        </div>
+        {aside}
+      </div>
+      <div className="mt-8">{children}</div>
+    </section>
+  );
+}
+
+
+
+
+
+6. Interactive & Telemetry Primitives
+
+
+A. Chart Container Card (ChartCard.tsx)
+
+
+export function ChartCard({ title, subtitle, actions, children, footnote }: ChartCardProps) {
+  return (
+    <figure className="panel flex flex-col p-5 sm:p-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <figcaption>
+          <h3 className="text-base font-medium text-foreground">{title}</h3>
+          {subtitle && <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>}
+        </figcaption>
+        {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
+      </div>
+      <div className="mt-5 flex-1">{children}</div>
+      {footnote && (
+        <p className="mt-4 border-t border-border/60 pt-3 text-xs leading-relaxed text-muted-foreground">
+          {footnote}
+        </p>
+      )}
+    </figure>
+  );
+}
+
+
+
+B. Segmented Button Control (Segmented.tsx)
+
+
+
+
+Used for switching variable timescales (Annual vs Monthly vs Trends) and regional filters.
+
+
+Exterior container: inline-flex gap-1 rounded-lg border border-border bg-background/60 p-1.
+
+
+Active button: bg-primary text-primary-foreground font-medium rounded-md px-3 py-1.5 text-sm.
+
+
+Inactive button: text-muted-foreground hover:bg-surface-raised hover:text-foreground.
+
+
+
+
+C. Statistical Significance Badges (SignificanceBadge.tsx)
+
+
+
+
+Significant (FDR p < 0.05): border-sand/40 bg-sand/10 text-sand with ArrowUpRight or ArrowDownRight.
+
+
+Not Significant: border-muted bg-muted/30 text-muted-foreground with Minus icon.
+
+
+Directional Coloring: Coral/amber for positive change (--positive), deep cool teal for negative change (--negative).
+
+
+
+
+
+
+7. Data Visualization & Map Conventions
+
+
+
+
+No Curved Overshoots: All line charts use linear interpolation (type="linear" in Recharts/SVG) to avoid fabricating intermediate points.
+
+
+Chart Tooltip: Styled as .panel-inset with mono coordinate time tags, colored series squares, and exact decimal values.
+
+
+Map Theming: Dark vector base tile layer (e.g., Esri World Dark Gray Base) with custom continuous color ramps:
+
+
+
+Heat/Temperature: Violet 
+→
+→ Amber 
+→
+→ Bright Gold
+
+
+Moisture/Rain: Sand 
+→
+→ Cyan 
+→
+→ Deep Indigo
+
+
+Dust/Aerosol: Pale Sand 
+→
+→ Terracotta 
+→
+→ Deep Rust
+
+
+
+
+
+
+
+
+
+
+8. Prompt Template for Another AI Agent
+
+
+
+An agent can receive the block below as an instruction to apply this UI:
+
+
+
+Adopt the "EarthSystem Editorial Research" design system:
+1. Palette: Deep navy background oklch(0.145 0.022 258), warm desert sand gold accent oklch(0.8 0.105 78), cyan oklch(0.8 0.115 212), and muted slate borders oklch(0.31 0.03 255 / 0.75).
+2. Typography: "Instrument Serif" for display titles and section headings; "IBM Plex Sans" for body and navigation; "IBM Plex Mono" with tabular-nums for metrics, coordinates, and .eyebrow subheadings.
+3. Card Surface: .panel class using linear-gradient(160deg, oklch(0.205 0.03 256), oklch(0.17 0.025 257)), 1px border, 12px border radius, and inset highlight shadow.
+4. Header: Sticky top-0 glassmorphism with backdrop-blur-xl, subtle border-b, and minimal orbital mark.
+5. Badging & Status: Monospace pills explicitly marking statistical significance (FDR p < 0.05 vs Not Significant).
+6. Never use default generic purple gradients or Inter font. Follow high-credibility NASA/scientific editorial styling throughout.
