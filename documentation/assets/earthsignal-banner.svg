@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="280" viewBox="0 0 1440 280" role="img" aria-labelledby="title desc">
+  <title id="title">EarthSignal — from NASA measurements to regional evidence</title>
+  <desc id="desc">Navy and sand research banner with a decorative orbital grid. The supplied study covers 2000–2025, nine variables and five analytical regions.</desc>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#253746" stroke-opacity=".36"/></pattern>
+    <radialGradient id="glow"><stop stop-color="#244451" stop-opacity=".65"/><stop offset="1" stop-color="#0a121d" stop-opacity="0"/></radialGradient>
+    <linearGradient id="line"><stop stop-color="#e6bb75"/><stop offset="1" stop-color="#5fc9d4"/></linearGradient>
+  </defs>
+  <rect width="1440" height="280" rx="16" fill="#080f18"/>
+  <rect width="1440" height="280" rx="16" fill="url(#grid)"/>
+  <path d="M0 2H1440" stroke="url(#line)" stroke-width="4"/>
+  <ellipse cx="1215" cy="140" rx="250" ry="170" fill="url(#glow)"/>
+  <g transform="translate(1215 140)" fill="none">
+    <circle r="91" stroke="#e6bb75" stroke-opacity=".7"/>
+    <circle r="113" stroke="#3c5967" stroke-dasharray="2 8"/>
+    <ellipse rx="109" ry="43" transform="rotate(-30)" stroke="#61bfca" stroke-opacity=".8"/>
+    <ellipse rx="43" ry="109" transform="rotate(-30)" stroke="#3b6575"/>
+    <path d="M-137 0H137M0-124V124" stroke="#385263" stroke-opacity=".7"/>
+    <circle cx="81" cy="-59" r="5" fill="#e6bb75" stroke="#080f18" stroke-width="3"/>
+    <circle r="3" fill="#61bfca"/>
+  </g>
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="13" letter-spacing="2.4">
+    <text x="62" y="49" fill="#e6bb75">EARTHSIGNAL / NASWEATS 2.0</text>
+    <text x="62" y="239" fill="#99acbc" font-size="12" letter-spacing="1.5">2000–2025 STUDY  ·  9 VARIABLES  ·  5 ANALYTICAL REGIONS</text>
+  </g>
+  <text x="59" y="121" font-family="Georgia, 'Times New Roman', serif" font-size="49" fill="#f0eee6">From NASA measurements</text>
+  <text x="59" y="179" font-family="Georgia, 'Times New Roman', serif" font-size="49" fill="#e6bb75">to regional evidence.</text>
+  <path d="M62 204H879" stroke="#344958"/>
+</svg>
