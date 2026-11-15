@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';
+import {rectangle,weightedCells,regionalRecords} from '../../website/src/spatial.js';
+import {validateDrawnPolygon} from '../../website/src/geometry.js';import {analyze} from '../../website/src/analytics.js';
+const data=JSON.parse(fs.readFileSync('website/.generated/public/cache/gulf-temperature.json'));
+const box=rectangle([48,24,52,28]),triangle={type:'Polygon',coordinates:[[[48,24],[52,24],[48,28],[48,24]]]};validateDrawnPolygon(triangle);
+const a=weightedCells(data,box),b=weightedCells(data,triangle),areaA=a.reduce((s,c)=>s+c.area,0),areaB=b.reduce((s,c)=>s+c.area,0);
+assert.ok(areaB/areaA>.45&&areaB/areaA<.55);assert.ok(b.length<a.length);
+const full=regionalRecords(data,a,box),partial=regionalRecords(data,b,triangle);
+assert.notEqual(analyze(full,2001,2024).slope,analyze(partial,2001,2024).slope);
+assert.ok(partial.some((r,i)=>r.value!==full[i].value));
+assert.throws(()=>validateDrawnPolygon({type:'Polygon',coordinates:[[[48,24],[52,28],[48,28],[52,24],[48,24]]]}),/cross/);
+console.log('PASS: a real NASA triangle clips source cells by polygon area, covers about half its bounding rectangle, changes monthly means and trend, and rejects crossing edges.');

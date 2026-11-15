@@ -1,9 +1,12 @@
-node_modules
+**/node_modules
 .git
 .venv
-dist
-.wrangler
+**/dist
+**/.wrangler
+**/.generated
+**/.tools
 .env
 .env.*
-!backend/.env.example
-verification
+!website/api/.env.example
+analysis/validation/reports
+data

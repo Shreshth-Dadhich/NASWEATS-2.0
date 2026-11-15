@@ -1,0 +1,1 @@
+"""EarthSignal project package."""

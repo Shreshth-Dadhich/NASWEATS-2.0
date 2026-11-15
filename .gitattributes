@@ -1,6 +1,8 @@
 # Preserve original scientific/download bytes on every platform.
-frontend/public/** -text
-frontend_data.zip -text
+data/** -text
+website/public/** -text
+analysis/data_processing/supplied/** -text
+documentation/sources/** -text
 *.png -text
 *.jpg -text
 *.woff2 -text

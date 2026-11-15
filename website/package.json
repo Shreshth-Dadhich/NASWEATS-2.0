@@ -1,0 +1,48 @@
+{
+  "name": "earthsignal-by-nasweats-2-0",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/serve.mjs",
+    "test": "node scripts/check.mjs",
+    "preview:cloudflare": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:check": "npm run build && wrangler deploy --dry-run",
+    "assets": "node scripts/prepare-assets.mjs",
+    "verify:deployment": "node scripts/verify-deployment.mjs",
+    "test:preview": "node ../analysis/validation/portable_preview.mjs"
+  },
+  "dependencies": {
+    "@turf/area": "7.2.0",
+    "@turf/intersect": "7.2.0",
+    "leaflet": "1.9.4",
+    "leaflet-draw": "1.0.4",
+    "plotly.js-basic-dist-min": "3.0.1",
+    "rc-slider": "11.1.8",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-leaflet": "5.0.0",
+    "react-plotly.js": "2.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.1.8",
+    "@vitejs/plugin-react": "4.4.1",
+    "tailwindcss": "4.1.8",
+    "vite": "6.3.5",
+    "wrangler": "4.162.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "license": "UNLICENSED",
+  "description": "NASA Earth system trend investigation and supplied Arabian Peninsula research workspace.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shreshth-Dadhich/NASWEATS-2.0.git",
+    "directory": "website"
+  },
+  "homepage": "https://earthsignal-nasweats-2-0.earthsignal-by-nasweats-2-0.workers.dev"
+}

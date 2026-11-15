@@ -6,7 +6,11 @@ dist/
 __pycache__/
 .pytest_cache/
 verification/
+analysis/validation/reports/
+.generated/
+.tools/
 nasa-source/
+/data/raw/
 .env
 .env.*
 !.env.example

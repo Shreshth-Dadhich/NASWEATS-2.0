@@ -1,0 +1,23 @@
+fastapi>=0.115,<1
+uvicorn>=0.34,<1
+numpy>=2.1,<3
+scipy>=1.14,<2
+pandas>=2.2,<3
+pymannkendall==1.4.3
+xarray>=2025.1,<2027
+netCDF4>=1.7,<2
+h5netcdf>=1.5,<2
+earthaccess>=0.14,<1
+earthengine-api>=1.5,<2
+shapely>=2.0,<3
+pyproj>=3.7,<4
+httpx>=0.28,<1
+pytest>=8,<10
+h5py>=3.16,<4
+openpyxl>=3.1.5,<4
+requests>=2.32,<3
+
+# Optional dependencies used by the contributed notebook reference.
+matplotlib>=3.9,<4
+python-dotenv>=1,<2
+statsmodels>=0.14,<1
