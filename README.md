@@ -2,6 +2,10 @@
 
 Interactive NASA Earth science investigation and supplied Arabian Peninsula research study. This repository packages the approved **EarthSignal Final** application for independent installation and hosting. The original UI, charts, maps, scientific calculations and bundled measurements are preserved. See `PROJECT_ORIGIN.json` for the source snapshot and archive checksum.
 
+**Public Cloudflare deployment:** https://earthsignal-nasweats-2-0.earthsignal-by-nasweats-2-0.workers.dev
+
+After building, verify the production HTML, API routing and scientific asset hashes with `node scripts/verify-deployment.mjs`. Supply an alternative HTTPS origin as the first argument when verifying your own deployment. Local verification reports are saved under the Git-ignored `verification/` directory.
+
 ## Start here: run from GitHub
 
 Install **Node.js 24** (including npm) and **Git**. Use a current Chrome, Edge, Firefox or Safari browser. Internet access is needed to install dependencies, load external basemaps and request new NASA data.
